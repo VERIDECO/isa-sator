@@ -210,6 +210,28 @@ body.torche .fond .torche{opacity:1}
 .entree .cimaise .toile img{width:100%;height:auto;display:block}
 .loupe.doc .gardien,.loupe.doc #btn-salon,.loupe.doc #choix-int{display:none}
 
+/* ---------- le reflet d'or : un balayage lumineux sur fond doré léger, au survol ---------- */
+.reflet-or,.serie-lien:hover,.serie-lien:focus-visible,.presse a:hover,.faits li:hover,.expos li:hover,.ventes li:hover,.entree:hover,.chiffres li:hover,.couleur:hover{
+  background-image:linear-gradient(100deg,transparent 0 35%,rgba(255,255,255,.16) 50%,transparent 65% 100%),
+    linear-gradient(90deg,rgba(251,235,180,.20),rgba(226,192,99,.10) 45%,rgba(184,144,42,.05) 75%,transparent 95%);
+  background-size:240% 100%,100% 100%;background-position:120% 0,0 0;background-repeat:no-repeat;
+  animation:reflet 1.4s ease 1}
+.presse a,.faits li,.expos li,.ventes li,.entree,.chiffres li,.couleur{transition:background-color .3s ease}
+.porte::after{transition:opacity .4s ease}
+.porte:hover::after{background:linear-gradient(to top,rgba(7,12,24,.92) 0%,rgba(7,12,24,.45) 45%,rgba(7,12,24,.05) 100%),
+  linear-gradient(100deg,transparent 0 35%,rgba(251,235,180,.22) 50%,transparent 65% 100%);background-size:100% 100%,240% 100%;background-position:0 0,120% 0;background-repeat:no-repeat;animation:reflet-porte 1.3s ease 1}
+@keyframes reflet-porte{0%{background-position:0 0,120% 0}100%{background-position:0 0,-120% 0}}
+.bouton{border-color:#D4AF37;color:#E2C063;background:rgba(7,12,24,.45)}
+.bouton:hover{background:linear-gradient(170deg,#FBEBB4,#E2C063 45%,#C9A227);color:var(--nuit);border-color:transparent}
+.bouton.plein{background:linear-gradient(170deg,#FBEBB4,#E2C063 45%,#C9A227);color:var(--nuit);border-color:transparent;box-shadow:0 8px 24px rgba(201,162,39,.25)}
+.bouton.plein:hover{background:rgba(7,12,24,.45);color:#E2C063;border-color:#D4AF37;box-shadow:none}
+.loupe .fermer.gardien{color:#E2C063;border-color:rgba(212,175,55,.6)}
+.loupe .fermer.gardien:hover{background:linear-gradient(170deg,#FBEBB4,#E2C063 45%,#C9A227);color:var(--nuit);border-color:transparent}
+/* petit message en bas d'écran (adresse copiée, etc.) */
+.toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:40;background:rgba(7,12,24,.94);color:var(--ivoire);
+  border:1px solid rgba(212,175,55,.6);padding:.8em 1.2em;font-size:.86rem;letter-spacing:.02em;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;max-width:min(92vw,46ch);text-align:center}
+.toast.visible{opacity:1;transform:translate(-50%,0)}
+
 /* ---------- mode pages (ordinateur) : une section à la fois, l'accueil comme hall d'entrée ---------- */
 body.pages [data-page]:not([hidden]){animation:fondu .55s ease}
 body.pages .bande .dedans{padding-top:clamp(26px,4vh,48px)}
@@ -268,9 +290,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     linear-gradient(to bottom,rgba(7,12,24,.72) 0%,rgba(7,12,24,.3) 26%,rgba(7,12,24,.82) 58%,var(--nuit) 100%)}
   .scene .dit{align-self:end}
 }
-.ouverture h1{font-family:var(--display);font-weight:400;font-size:clamp(3.4rem,11.5vw,7.6rem);line-height:.86;letter-spacing:-.02em;margin:0 0 .22em;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.75)}
+.ouverture h1{font-family:var(--display);font-weight:400;font-size:clamp(3.4rem,11.5vw,7.6rem);line-height:.86;letter-spacing:-.02em;margin:0 0 .22em;text-wrap:balance;display:inline-block;
+  background-image:linear-gradient(100deg,transparent 0 40%,rgba(255,255,255,.85) 50%,transparent 60% 100%),linear-gradient(170deg,#FBEBB4 0%,#E2C063 30%,#B8902A 50%,#F1D27E 68%,#9E7A1E 100%);
+  background-size:260% 100%,100% 100%;background-position:120% 0,0 0;background-repeat:no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 18px rgba(0,0,0,.75));animation:reflet 2.2s ease .6s 1}
 .ouverture h1 em{font-style:italic;display:block}
-.accroche{font-size:clamp(1.02rem,1.9vw,1.38rem);margin:0 0 .85em;color:var(--ivoire);max-width:34ch;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.accroche{font-size:clamp(1.02rem,1.9vw,1.38rem);margin:0 0 .85em;color:var(--ivoire);max-width:40ch;line-height:1.35;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.accroche small{font-size:.72em;color:var(--cendre);letter-spacing:.04em}
 .accroche b{font-weight:400;letter-spacing:.02em;text-shadow:none;background-image:linear-gradient(170deg,#FBEBB4 0%,#E2C063 35%,#F1D27E 60%,#C9A227 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 10px rgba(0,0,0,.7))}
 .sous{color:var(--cendre);margin:0 0 2em;max-width:42ch;text-shadow:0 2px 12px rgba(0,0,0,.85)}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
@@ -464,7 +490,9 @@ dialog.loupe::backdrop{background:rgba(5,8,18,.94)}
 .loupe .scene img{max-height:100%;max-width:100%;width:auto;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.8);position:relative;z-index:1}
 .loupe .scene .rebond{position:absolute;inset:4% 8%;background-image:var(--toile);background-size:cover;background-position:center;filter:blur(70px) saturate(2);opacity:.5;z-index:0}
 .loupe .pied{display:flex;gap:18px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
-.loupe .fermer{background:none;border:1px solid var(--trait);color:var(--cendre);font:inherit;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.55em 1.2em;cursor:pointer;flex:none}
+.loupe .fermer,.panneau .fermer{background:none;border:1px solid var(--trait);color:var(--cendre);font:inherit;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.55em 1.2em;cursor:pointer;flex:none}
+.panneau .fermer:hover{border-color:var(--orange);color:var(--orange)}
+.panneau .grille .cimaise{cursor:pointer}
 .loupe .fermer:hover{border-color:var(--orange);color:var(--orange)}
 
 
@@ -477,6 +505,9 @@ html.js .cimaise:not(.allume) .toile img{filter:brightness(.55) saturate(.85)}
 .apparait.vu{opacity:1;transform:none}
 .scene canvas.coeurs{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 canvas.trace{position:fixed;inset:0;width:100%;height:100%;z-index:31;pointer-events:none}
+.palette-doigt{position:fixed;left:0;top:0;width:58px;height:58px;z-index:32;pointer-events:none;opacity:0;transform-origin:6px 2px;
+  transition:opacity .35s ease;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5));will-change:transform}
+.palette-doigt.visible{opacity:1;transition:opacity .12s ease}
 dialog canvas.trace{position:absolute;z-index:5}
 
 /* ---------- chez vous : la toile à l'échelle ---------- */
@@ -519,7 +550,8 @@ dialog canvas.trace{position:absolute;z-index:5}
 .cimaise img,.scene .fresque,.panneau img,.loupe img{
   -webkit-user-drag:none;user-select:none;-webkit-touch-callout:none;pointer-events:none;
 }
-.cimaise .garde,.scene .garde{position:absolute;inset:0;z-index:5;background:transparent}
+.cimaise .garde{position:absolute;inset:0;z-index:5;background:transparent}
+.scene .garde{position:absolute;inset:0;z-index:1;background:transparent}   /* au-dessus de la photo, sous le texte et les boutons */
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -561,7 +593,7 @@ dialog canvas.trace{position:absolute;z-index:5}
     <div class="dit gouttiere">
       <div class="centre">
         <h1>Isa<em>Sator</em></h1>
-        <p class="accroche"><b>Artiste cotée Artprice</b> · Coloriste plasticienne visionnaire</p>
+        <p class="accroche"><b>Artiste cotée à l'international</b> <small>(Artprice)</small><br>Coloriste plasticienne visionnaire</p>
         <p class="sous">Vingt-quatre œuvres adjugées en ventes publiques depuis 2005. Exposée à Paris, New York, Dubaï, Londres et Houston. Couleur, énergie &amp; talisman, pour des âmes fortes.</p>
         <div class="actions">
           <a class="bouton plein" href="#oeuvres">Voir les œuvres</a>
@@ -998,6 +1030,7 @@ sl.addEventListener("click",e=>{
   let m = mot || "";
   if(!tb.length) m = (m?m+" ":"") + "Les toiles de cette série ne sont pas encore reliées au catalogue. Écrivez à l'atelier pour les découvrir.";
   else if(fiab==="a-confirmer") m = (m?m+" ":"") + "Rattachement proposé, à confirmer avec Isa.";
+  if(tb.length) m = (m?m+" ":"") + "Touchez une toile pour la voir chez vous, à l'échelle.";
   document.getElementById("pan-mot").textContent = m;
   const g=document.getElementById("pan-grille");
   g.innerHTML = tb.map(n=>{
@@ -1028,10 +1061,10 @@ const INTERIEURS={
     paysage:{src:"interieur-salon-paysage.jpg",w:2000,h:1125,k:311.5,sol:905,
       dessus:{x:480,basPref:0.97,basMin:0.80,hautMax:2.48,largMax:2.4},
       libre:{x:1480,largMax:3.0,centreY:1.6,hautMax:2.48},
-      deco:[{x:115,y:695,w:141,h:140,img:"deco/coussin.png",c:0,a:1,omb:1},{x:700,y:695,w:141,h:140,img:"deco/coussin.png",c:1,a:1,omb:1},{x:525,y:673,w:70,h:92,img:"deco/vase-tiges.png",nat:1},{x:526,y:765,w:69,h:93,img:"deco/vase.png",c:1,a:1,omb:1}]},
+      deco:[{x:115,y:695,w:141,h:140,img:"deco/coussin.png",c:0,a:1,omb:1},{x:700,y:695,w:141,h:140,img:"deco/coussin.png",c:1,a:1,omb:1},{x:525,y:673,w:70,h:92,img:"deco/vase-tiges.png",nat:1},{x:526,y:765,w:69,h:93,img:"deco/vase.png",c:1,a:1,omb:1},{x:1064,y:564,w:130,h:170,img:"deco/vase-tiges.png",nat:1},{x:1067,y:734,w:126,h:171,img:"deco/vase.png",c:1,a:1,omb:1}]},
     portrait:{src:"interieur-salon-portrait.jpg",w:1125,h:2015,k:461,sol:1490,
       dessus:{x:370,basPref:0.92,basMin:0.75,hautMax:2.48,largMax:2.2},
-      deco:[{x:505,y:1193,w:209,h:207,img:"deco/coussin.png",c:1,a:1,omb:1},{x:350,y:1193,w:209,h:207,img:"deco/coussin.png",c:0,a:1,omb:1}]}},
+      deco:[{x:505,y:1193,w:209,h:207,img:"deco/coussin.png",c:1,a:1,omb:1},{x:350,y:1193,w:209,h:207,img:"deco/coussin.png",c:0,a:1,omb:1},{x:832,y:984,w:193,h:252,img:"deco/vase-tiges.png",nat:1},{x:836,y:1236,w:187,h:254,img:"deco/vase.png",c:1,a:1,omb:1}]}},
   chambre:{nom:"Chambre",legende:"dans une chambre, au-dessus d'un lit de 160",
     paysage:{src:"interieur-chambre.jpg",w:2000,h:1116,k:307.7,sol:914,
       dessus:{x:1007,basPref:1.22,basMin:1.05,hautMax:2.48,largMax:2.4},
@@ -1043,7 +1076,10 @@ const INTERIEURS={
   loft:{nom:"Loft",legende:"dans un loft à haut plafond, mur de briques",
     paysage:{src:"interieur-loft-paysage.jpg",w:2000,h:1125,k:218,sol:1075,
       libre:{x:960,largMax:3.9,centreY:2.7,hautMax:4.3},
-      deco:[{x:1423,y:262,w:184,h:139,img:"deco/loft-abatjour.png",c:0,a:1.0},{x:191,y:840,w:173,h:155,img:"deco/loft-pot.png",c:1,a:1.0}]}}
+      deco:[{x:1423,y:262,w:184,h:139,img:"deco/loft-abatjour.png",c:0,a:1.0},{x:191,y:840,w:173,h:155,img:"deco/loft-pot.png",c:1,a:1.0}]},
+    portrait:{src:"interieur-loft-portrait.jpg",w:1125,h:2015,k:420,sol:1440,
+      libre:{x:410,largMax:1.5,centreY:2.08,hautMax:3.2},
+      deco:[{x:733,y:690,w:169,h:116,img:"deco/loftp-abatjour.png",c:0,a:1.0},{x:3,y:1255,w:154,h:149,img:"deco/loftp-pot.png",c:1,a:1.0}]}}
 };
 /* les deux couleurs principales de chaque toile, pour teinter coussins, tête de lit, pot : calculées sur les 104 images */
 const PALS={"adn-sator":["#2e9ce5","#f7120c"],"baiser-givre":["#deb24a","#6d5344"],"cochon-hurlant":["#cf0005","#217216"],"come-8":["#c0567e","#6e3e4d"],"distance-terre-soleil":["#fd5d0d","#03b9ac"],"erectus":["#ca0607","#6e2611"],"gaby-deslys":["#732136","#a5665e"],"guns-and-roses":["#8e1108","#936131"],"hotel-du-cul-tourne":["#7d030a","#18792a"],"jardin-deden":["#b50607","#0b413f"],"la-loba":["#21aa75","#865a41"],"le-bain":["#7e0e44","#fda403"],"les-archi-drolesse":["#781514","#8a554b"],"meme-longueur-donde":["#b68621","#611228"],"patti-smith":["#553725","#553725"],"rien-ne-va-plus":["#a50137","#743d60"],"sans-titre-2001":["#d1c128","#212a82"],"sans-titre-2003-a":["#e3c91d","#bb9268"],"sans-titre-2003-b":["#e0ab23","#9a5031"],"ubus-le-rebus":["#b10703","#08702a"],"women-leopard":["#362f5b","#872841"],"yvette-guilbert":["#a74833","#c5841c"],"TB01":["#769fb9","#769fb9"],"TB02":["#db6631","#e1b05c"],"TB03":["#d68b3d","#bf3031"],"TB04":["#9f1419","#c47054"],"TB05":["#d45e31","#654337"],"TB06":["#352e5b","#852840"],"TB07":["#249d4b","#2c5339"],"TB08":["#315bce","#7e372f"],"TB09":["#d0354b","#d6b237"],"TB10":["#e4201f","#137955"],"TB11":["#d51744","#c86f36"],"TB12":["#5fac34","#254089"],"TB13":["#338033","#ce4320"],"TB14":["#2f7384","#b1923a"],"TB15":["#9e3940","#387764"],"TB16":["#6d1d17","#f3d43e"],"TB17":["#f7a707","#6b263a"],"TB18":["#ac5441","#e1c668"],"TB19":["#c43419","#80170b"],"TB20":["#d47a19","#944e37"],"TB21":["#a00e08","#9e8d64"],"TB22":["#85231e","#c4963d"],"TB23":["#a00f0c","#0d413c"],"TB24":["#ac6505","#298337"],"TB25":["#1ac1e9","#41e878"],"TB26":["#be7921","#804b32"],"TB27":["#c44671","#dba96c"],"TB28":["#9c1a07","#156d33"],"TB29":["#4461bb","#844053"],"TB30":["#2e448a","#bd9572"],"TB31":["#fc7c41","#64b2ae"],"TB32":["#ee3429","#a5943b"],"TB33":["#9a6960","#692e38"],"TB34":["#77ba3a","#44a169"],"TB35":["#266ea8","#e6bd25"],"TB36":["#8d0303","#ef4208"],"TB37":["#0fa185","#bb5639"],"TB38":["#b3463e","#8f5767"],"TB39":["#d85c33","#d85c33"],"TB40":["#9b3014","#daa833"],"TB41":["#0e6381","#f59413"],"TB42":["#4b8b93","#77b8bf"],"TB43":["#951a16","#2a772f"],"TB44":["#762542","#b4271f"],"TB45":["#88050e","#925350"],"TB46":["#948b5a","#576842"],"TB47":["#7a535a","#6c858e"],"TB48":["#d84a30","#822637"],"TB49":["#b68349","#7e683c"],"TB50":["#010147","#fed005"],"TB51":["#deb24b","#6d5343"],"TB52":["#b74d50","#532936"],"TB53":["#458f57","#63473e"],"TB54":["#e2ab21","#985131"],"TB55":["#d83925","#30486b"],"TB56":["#d5402d","#7d2929"],"TB57":["#e5bf6e","#6e5323"],"TB58":["#eeb834","#bd7266"],"TB59":["#989f09","#c4cb02"],"TB60":["#57951c","#805633"],"TB61":["#dd3c2b","#37559c"],"TB62":["#8b0e1a","#c93a44"],"TB63":["#d55a43","#522d2c"],"TB64":["#db4b3e","#4b569f"],"TB65":["#8d4c3d","#8d4c3d"],"TB66":["#d75123","#cd9c7d"],"TB67":["#944c4e","#944c4e"],"TB68":["#755a53","#c8beb9"],"TB69":["#142d76","#532023"],"TB70":["#d64b38","#ddbe81"],"TB71":["#e4bd28","#272892"],"TB72":["#b83d39","#db6663"],"TB73":["#884633","#423024"],"TB74":["#393260","#393260"],"TB75":["#6f4c15","#b2873f"],"TB76":["#d94f3b","#773733"],"TB77":["#b49156","#8a7241"],"TB78":["#458f57","#63473e"],"TB79":["#88332c","#a97a67"],"TB80":["#a8873d","#531927"],"TB81":["#2da459","#c95a4a"],"TB82":["#a8224b","#a8224b"]};
@@ -1209,6 +1245,18 @@ if(!reduit){
   requestAnimationFrame(boucle);
 })();
 
+/* ---------- sur écran tactile, la palette apparaît sous le doigt et le suit ---------- */
+(function(){
+  if(!matchMedia("(hover:none) and (pointer:coarse)").matches) return;
+  const p=document.createElement("img"); p.src="palette-96.png"; p.alt=""; p.className="palette-doigt"; p.setAttribute("aria-hidden","true"); document.body.appendChild(p);
+  let cache=null;
+  function pose(t){ p.style.transform="translate("+(t.clientX-6)+"px,"+(t.clientY-2)+"px)"; }
+  addEventListener("touchstart",e=>{ clearTimeout(cache); pose(e.touches[0]); p.classList.add("visible"); },{passive:true});
+  addEventListener("touchmove",e=>{ pose(e.touches[0]); },{passive:true});
+  function range(){ clearTimeout(cache); cache=setTimeout(()=>p.classList.remove("visible"),650); }
+  addEventListener("touchend",range,{passive:true}); addEventListener("touchcancel",range,{passive:true});
+})();
+
 /* ---------- au clic, un éclat de couleur : lumineux, délicat, contenu ---------- */
 (function(){
   if(reduit) return;
@@ -1217,7 +1265,7 @@ if(!reduit){
   function taille(){ calques.forEach(c=>{ c.L=c.cv.width=Math.round(innerWidth*devicePixelRatio); c.H=c.cv.height=Math.round(innerHeight*devicePixelRatio); }); }
   taille(); addEventListener("resize",taille);
   function calqueActif(){
-    const d=document.querySelector("dialog[open]");
+    const ouverts=document.querySelectorAll("dialog[open]"), d=ouverts[ouverts.length-1];
     return calques.find(c=> d ? d.contains(c.cv) : !c.cv.closest("dialog")) || calques[0];
   }
   function eclate(x,y){
@@ -1237,7 +1285,11 @@ if(!reduit){
       c.gouttes.push({x,y,vx:Math.cos(ang)*v,vy:Math.sin(ang)*v,r:(2.4+Math.random()*4.4)*d,c:cc,age:0,vie:1.1+Math.random()*0.5,peinture:true,et:Math.random()*6.28});
     }
   }
-  addEventListener("pointerdown",e=>{ if(e.button!==undefined&&e.button!==0) return; eclate(e.clientX*devicePixelRatio,e.clientY*devicePixelRatio); },{passive:true});
+  addEventListener("pointerdown",e=>{ if(e.button!==undefined&&e.button!==0) return; if(e.pointerType==="touch") return; eclate(e.clientX*devicePixelRatio,e.clientY*devicePixelRatio); },{passive:true});
+  /* au doigt : l'éclat part au relâchement, si le doigt n'a pas bougé (sinon c'est un défilement) */
+  let appui=null;
+  addEventListener("touchstart",e=>{ const t=e.changedTouches[0]; appui={x:t.clientX,y:t.clientY,t:Date.now()}; },{passive:true});
+  addEventListener("touchend",e=>{ const t=e.changedTouches[0]; if(appui && Math.hypot(t.clientX-appui.x,t.clientY-appui.y)<12 && Date.now()-appui.t<450) eclate(t.clientX*devicePixelRatio,t.clientY*devicePixelRatio); appui=null; },{passive:true});
   function lueur(ctx,x,y,r,c,a){
     const g=ctx.createRadialGradient(x,y,0,x,y,r);
     g.addColorStop(0,"rgba(255,250,240,"+(a*.95).toFixed(3)+")");
@@ -1318,6 +1370,16 @@ if(matchMedia("(hover:hover) and (pointer:fine)").matches){
   addEventListener("pointerleave",()=>document.body.classList.remove("torche"));
 }
 
+/* tout lien de courriel : on ouvre la messagerie ET on copie l'adresse, avec un petit message, au cas où aucune messagerie n'est réglée sur l'appareil */
+const toast=document.createElement("div"); toast.className="toast"; toast.setAttribute("role","status"); document.body.appendChild(toast);
+let toastT=null;
+function montreToast(t){ toast.textContent=t; toast.classList.add("visible"); clearTimeout(toastT); toastT=setTimeout(()=>toast.classList.remove("visible"),3800); }
+document.addEventListener("click",e=>{
+  const a=e.target.closest('a[href^="mailto:"]'); if(!a) return;
+  const adresse=a.getAttribute("href").replace(/^mailto:/,"").split("?")[0];
+  try{ navigator.clipboard&&navigator.clipboard.writeText(adresse); }catch(_){}
+  montreToast("Adresse copiée : "+adresse+". Si votre messagerie ne s'ouvre pas, collez-la dans un nouveau message.");
+});
 const btn=document.getElementById("btn-copier");
 btn.addEventListener("click",async()=>{
   const t=document.getElementById("courriel").textContent;
@@ -1346,19 +1408,26 @@ Object.keys(CAT).map(Number).sort((a,b)=>a-b).forEach(n=>{
   cg.appendChild(b);
 });
 surveille(cg);
-cg.addEventListener("click",e=>{
-  const b=e.target.closest(".fiche"); if(!b) return;
-  const n=+b.dataset.n, o=CAT[n], id="TB"+String(n).padStart(2,"0");
+/* une toile du catalogue (par son numéro TB) s'ouvre directement mise en scène chez soi */
+function chezSoi(n){
+  const o=CAT[n]; if(!o) return;
+  const id="TB"+String(n).padStart(2,"0");
   const src=(GRANDS.includes(n))?"grand/"+id+".jpg":"catalogue/"+id+".jpg";
   const dim=DIMS[n];
   /* dimensions inconnues : format indicatif, grand côté 100 cm, dans les proportions de la photo */
   let h=dim?dim[0]:null, l=dim?dim[1]:null, estime=false;
   if(!dim){ const r=o[3]/o[2]; if(r>=1){h=100;l=Math.round(100/r);} else {l=100;h=Math.round(100*r);} estime=true; }
   ouvreLoupe(src, o[1], id+(dim?" — "+dim[0]+" × "+dim[1]+" cm":" — dimensions à préciser"), "", h, l, id, estime);
-  /* depuis le catalogue, on arrive directement dans la pièce */
   loupe.classList.add("chez-vous"); btnSalon.classList.add("actif"); btnSalon.textContent="Voir la toile seule";
   document.getElementById("choix-int").hidden=false; dessineSalon();
-});
+}
+cg.addEventListener("click",e=>{ const b=e.target.closest(".fiche"); if(b) chezSoi(+b.dataset.n); });
+/* les grands formats et les toiles des séries aussi */
+function numeroDe(el){ const img=el.querySelector("img"); const m=img&&/TB(\d+)\.jpg/.exec(img.getAttribute("src")); return m?+m[1]:null; }
+document.querySelectorAll(".grand .cimaise").forEach(c=>{ c.setAttribute("role","button"); c.tabIndex=0; c.style.cursor="pointer";
+  const ouvre=()=>{ const n=numeroDe(c); if(n) chezSoi(n); };
+  c.addEventListener("click",ouvre); c.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); ouvre(); } }); });
+document.getElementById("pan-grille").addEventListener("click",e=>{ const f=e.target.closest("figure"); if(!f) return; const n=numeroDe(f); if(n) chezSoi(n); });
 </script>
 
 </body>
