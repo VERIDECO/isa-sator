@@ -1,3 +1,3 @@
-# Isa Sator, site de l'artiste
+# Isa Sator
 
-Aperçu du nouveau site d'Isa Sator, artiste peintre. Toutes les œuvres reproduites sont protégées : © Isa Sator. Portrait © Grégory Herpe.
+Ce dépôt est l'ancienne adresse d'aperçu. Le site a déménagé sur https://isa-sator.github.io/ (dépôt isa-sator/isa-sator.github.io).
